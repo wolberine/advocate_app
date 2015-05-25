@@ -1,0 +1,59 @@
+<!-- Responsive panel example-->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">School #<%= @school.id %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <dl class="dl-horizontal">
+
+              <dt>Advocate</dt>
+              <dd><%= @school.advocate.name %></dd>
+
+              <dt>Network</dt>
+              <dd><%= @school.network.name %></dd>
+
+              <dt>Longitude</dt>
+              <dd><%= @school.longitude %></dd>
+
+
+              <dt>Latitude</dt>
+              <dd><%= @school.latitude %></dd>
+
+
+              <dt>Location</dt>
+              <dd><%= @school.location %></dd>
+
+
+              <dt>Name</dt>
+              <dd><%= @school.name %></dd>
+
+
+            </dl>
+            <div class="btn-group btn-group-justified">
+
+              <a href="/schools" class="btn btn-primary">
+                <i class="fa fa-chevron-left"></i>
+              </a>
+
+              <a href="/schools/<%= @school.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+
+              <a href="/delete_school/<%= @school.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->

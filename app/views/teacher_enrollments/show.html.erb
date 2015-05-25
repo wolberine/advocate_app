@@ -1,0 +1,49 @@
+<!-- Responsive panel example-->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Teacher Enrollment #<%= @teacher_enrollment.id %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <dl class="dl-horizontal">
+
+              <dt>Completed</dt>
+              <dd><%= @teacher_enrollment.completed %></dd>
+
+
+              <dt>Teacher course</dt>
+              <dd><%= @teacher_enrollment.teacher_course_id %></dd>
+
+
+              <dt>Teacher</dt>
+              <dd><%= @teacher_enrollment.teacher_id %></dd>
+
+
+            </dl>
+            <div class="btn-group btn-group-justified">
+
+              <a href="/teacher_enrollments" class="btn btn-primary">
+                <i class="fa fa-chevron-left"></i>
+              </a>
+
+              <a href="/teacher_enrollments/<%= @teacher_enrollment.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+
+              <a href="/delete_teacher_enrollment/<%= @teacher_enrollment.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->

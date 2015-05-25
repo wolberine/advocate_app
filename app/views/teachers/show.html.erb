@@ -1,0 +1,73 @@
+<!-- Responsive panel example-->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Teacher <%= @teacher.name %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <dl class="dl-horizontal">
+
+              <dt>Advocate</dt>
+              <dd><%= @teacher.advocate.name %></dd>
+
+
+              <dt>Gender</dt>
+              <dd><%= @teacher.gender %></dd>
+
+
+              <dt>Dob</dt>
+              <dd><%= @teacher.dob %></dd>
+
+
+              <dt>Education level</dt>
+              <dd><%= @teacher.education_level %></dd>
+
+
+              <dt>Teacher enrollment</dt>
+              <dd><%= @teacher.teacher_enrollment_id %></dd>
+
+
+              <dt>School</dt>
+              <dd><%= @teacher.school.name %></dd>
+
+
+              <dt>Name</dt>
+              <dd><%= @teacher.name %></dd>
+
+
+            </dl>
+            <div class="btn-group btn-group-justified">
+
+              <a href="/teachers" class="btn btn-primary">
+                <i class="fa fa-chevron-left"></i>
+              </a>
+
+              <a href="/teachers/<%= @teacher.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+
+              <a href="/delete_teacher/<%= @teacher.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="list-group">
+          <h1>Students</h1>
+          <% @teacher.student_enrollments.each do |student_enrollment| %>
+          <li class="list-group-item">
+            <h4 class="list-group-item-heading"><%= student_enrollment.student.name %></h4>
+          </li>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->
