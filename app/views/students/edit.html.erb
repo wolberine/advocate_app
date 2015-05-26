@@ -15,7 +15,7 @@
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Edit Student #<%= @student.id %></h3>
+        <h3 class="panel-title">Edit Student <%= @student.name %></h3>
       </div>
       <div class="panel-body">
 
@@ -24,6 +24,19 @@
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
 
+          <!-- Label and input for name -->
+          <div class="form-group">
+
+            <label for="name" class="col-sm-2 control-label">
+              Name
+            </label>
+            <div class="col-sm-10">
+
+              <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @student.name %>">
+
+            </div>
+
+          </div>
 
           <!-- Label and input for school_id -->
           <div class="form-group">
@@ -62,7 +75,7 @@
             </label>
             <div class="col-sm-10">
 
-              <input type="text" id="dob" name="dob" placeholder="Dob" class="form-control" value="<%= @student.dob %>">
+              <input type="date" id="dob" name="dob" placeholder="Dob" class="form-control" value="<%= @student.dob %>">
 
             </div>
 
@@ -78,21 +91,6 @@
             <div class="col-sm-10">
 
               <input type="text" id="education_level" name="education_level" placeholder="Education level" class="form-control" value="<%= @student.education_level %>">
-
-            </div>
-
-          </div>
-
-
-          <!-- Label and input for name -->
-          <div class="form-group">
-
-            <label for="name" class="col-sm-2 control-label">
-              Name
-            </label>
-            <div class="col-sm-10">
-
-              <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @student.name %>">
 
             </div>
 

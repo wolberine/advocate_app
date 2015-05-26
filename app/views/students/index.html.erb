@@ -22,7 +22,7 @@
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Student #<%= student.id %></h3>
+        <h3 class="panel-title"><%= student.name %></h3>
       </div>
       <div class="panel-body">
         <dl>
@@ -30,22 +30,24 @@
           <dt>School</dt>
           <dd><%= student.school.name %></dd>
 
+          <% student.student_enrollments.each do |student_enrollment| %>
+            <dt>Teacher</dt>
+            <dd><%= student_enrollment.teacher.name %></dd>
+          <% end %>
 
-          <dt>Gender</dt>
-          <dd><%= student.gender %></dd>
-
-
-          <dt>Dob</dt>
-          <dd><%= student.dob %></dd>
-
-
-          <dt>Education level</dt>
-          <dd><%= student.education_level %></dd>
+          <button type="button" class="btn" data-toggle="collapse" data-target="#personalDataToggle<%= student.id %>">View personal details  <i class="fa fa-info-circle"></i></button>
+          <div id="personalDataToggle<%= student.id %>" class="collapse out">
+            <dt>Gender</dt>
+            <dd><%= student.gender %></dd>
 
 
-          <dt>Name</dt>
-          <dd><%= student.name %></dd>
+            <dt>Dob</dt>
+            <dd><%= student.dob %></dd>
 
+
+            <dt>Education level</dt>
+            <dd><%= student.education_level %></dd>
+          </div>
 
         </dl>
         <div class="btn-group btn-group-justified">

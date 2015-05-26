@@ -16,7 +16,7 @@ class StudentsController < ApplicationController
 
     @student.school_id = params[:school_id]
 
-    @student.gender = params[:gender]
+    @student.gender = params[:gender].downcase
 
     @student.dob = params[:dob]
 

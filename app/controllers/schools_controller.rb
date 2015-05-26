@@ -18,11 +18,22 @@ class SchoolsController < ApplicationController
 
     @school.network_id = params[:network_id]
 
-    @school.longitude = params[:longitude]
-
-    @school.latitude = params[:latitude]
-
     @school.location = params[:location]
+
+    #google map api
+    require 'json'
+    require 'open-uri'
+    url_beginning = "http://maps.googleapis.com/maps/api/geocode/json?address="
+    url_middle = @school.location.downcase.tr(" ","+")
+    url_ending = "&sensor=false"
+    url = url_beginning + url_middle + url_ending
+    parsed_data = JSON.parse(open(url).read)
+    latitude = parsed_data["results"][0]["geometry"]["location"]["lat"].to_f
+    longitude = parsed_data["results"][0]["geometry"]["location"]["lng"].to_f
+
+    @school.latitude = latitude
+
+    @school.longitude = longitude
 
     @school.name = params[:name]
 
@@ -48,11 +59,22 @@ class SchoolsController < ApplicationController
 
     @school.network_id = params[:network_id]
 
-    @school.longitude = params[:longitude]
-
-    @school.latitude = params[:latitude]
-
     @school.location = params[:location]
+
+    #google map api
+    require 'json'
+    require 'open-uri'
+    url_beginning = "http://maps.googleapis.com/maps/api/geocode/json?address="
+    url_middle = @school.location.downcase.tr(" ","+")
+    url_ending = "&sensor=false"
+    url = url_beginning + url_middle + url_ending
+    parsed_data = JSON.parse(open(url).read)
+    latitude = parsed_data["results"][0]["geometry"]["location"]["lat"].to_f
+    longitude = parsed_data["results"][0]["geometry"]["location"]["lng"].to_f
+
+    @school.latitude = latitude
+
+    @school.longitude = longitude
 
     @school.name = params[:name]
 

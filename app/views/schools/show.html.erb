@@ -4,7 +4,7 @@
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">School #<%= @school.id %></h3>
+        <h3 class="panel-title">School <%= @school.name %></h3>
       </div>
       <div class="panel-body">
         <div class="row">
@@ -27,10 +27,6 @@
 
               <dt>Location</dt>
               <dd><%= @school.location %></dd>
-
-
-              <dt>Name</dt>
-              <dd><%= @school.name %></dd>
 
 
             </dl>

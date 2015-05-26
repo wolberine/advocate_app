@@ -23,7 +23,19 @@
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+          <!-- Label and input for name -->
+          <div class="form-group">
 
+            <label for="name" class="col-sm-2 control-label">
+              Name
+            </label>
+            <div class="col-sm-10">
+
+              <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @school.name %>">
+
+            </div>
+
+          </div>
 
           <!-- Label and input for advocate_id -->
           <div class="form-group">
@@ -54,36 +66,6 @@
           </div>
 
 
-          <!-- Label and input for longitude -->
-          <div class="form-group">
-
-            <label for="longitude" class="col-sm-2 control-label">
-              Longitude
-            </label>
-            <div class="col-sm-10">
-
-              <input type="text" id="longitude" name="longitude" placeholder="Longitude" class="form-control" value="<%= @school.longitude %>">
-
-            </div>
-
-          </div>
-
-
-          <!-- Label and input for latitude -->
-          <div class="form-group">
-
-            <label for="latitude" class="col-sm-2 control-label">
-              Latitude
-            </label>
-            <div class="col-sm-10">
-
-              <input type="text" id="latitude" name="latitude" placeholder="Latitude" class="form-control" value="<%= @school.latitude %>">
-
-            </div>
-
-          </div>
-
-
           <!-- Label and input for location -->
           <div class="form-group">
 
@@ -99,21 +81,34 @@
           </div>
 
 
-          <!-- Label and input for name -->
+          <!-- Label and input for latitude -->
           <div class="form-group">
 
-            <label for="name" class="col-sm-2 control-label">
-              Name
+            <label for="latitude" class="col-sm-2 control-label">
+              Latitude
             </label>
             <div class="col-sm-10">
 
-              <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @school.name %>">
+              <input type="text" id="latitude" name="latitude" placeholder="Latitude" class="form-control" value="<%= @school.latitude %>  (Determined by location)" disabled="disabled">
 
             </div>
 
           </div>
 
 
+          <!-- Label and input for longitude -->
+          <div class="form-group">
+
+            <label for="longitude" class="col-sm-2 control-label">
+              Longitude
+            </label>
+            <div class="col-sm-10">
+
+              <input type="text" id="longitude" name="longitude" placeholder="Longitude" class="form-control" value="<%= @school.longitude %>  (Determined by location)" disabled="disabled">
+
+            </div>
+
+          </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <button class="btn btn-warning">

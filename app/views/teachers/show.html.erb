@@ -11,6 +11,12 @@
           <div class="col-md-12">
             <dl class="dl-horizontal">
 
+              <dt>School</dt>
+              <dd><%= @teacher.school.name %></dd>
+
+              <dt>Network</dt>
+              <dd><%= @teacher.school.network.name %></dd>
+
               <dt>Advocate</dt>
               <dd><%= @teacher.advocate.name %></dd>
 
@@ -29,14 +35,6 @@
 
               <dt>Teacher enrollment</dt>
               <dd><%= @teacher.teacher_enrollment_id %></dd>
-
-
-              <dt>School</dt>
-              <dd><%= @teacher.school.name %></dd>
-
-
-              <dt>Name</dt>
-              <dd><%= @teacher.name %></dd>
 
 
             </dl>

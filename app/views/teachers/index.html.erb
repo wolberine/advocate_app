@@ -27,32 +27,32 @@
       <div class="panel-body">
         <dl>
 
-          <dt>Advocate</dt>
-          <dd><%= teacher.advocate.name %></dd>
-
-
-          <dt>Gender</dt>
-          <dd><%= teacher.gender %></dd>
-
-
-          <dt>Dob</dt>
-          <dd><%= teacher.dob %></dd>
-
-
-          <dt>Education level</dt>
-          <dd><%= teacher.education_level %></dd>
-
-
-          <dt>Teacher enrollment</dt>
-          <dd><%= teacher.teacher_enrollment_id %></dd>
-
-
           <dt>School</dt>
           <dd><%= teacher.school.name %></dd>
 
+          <dt>Network</dt>
+          <dd><%= teacher.school.network.name %></dd>
 
-          <dt>Name</dt>
-          <dd><%= teacher.name %></dd>
+          <dt>Advocate</dt>
+          <dd><%= teacher.advocate.name %></dd>
+
+          <button type="button" class="btn" data-toggle="collapse" data-target="#personalDataToggle<%= teacher.id %>">View personal details  <i class="fa fa-info-circle"></i></button>
+          <div id="personalDataToggle<%= teacher.id %>" class="collapse out">
+            <dt>Gender</dt>
+            <dd><%= teacher.gender %></dd>
+
+
+            <dt>Dob</dt>
+            <dd><%= teacher.dob %></dd>
+
+
+            <dt>Education level</dt>
+            <dd><%= teacher.education_level %></dd>
+
+
+            <dt>Teacher enrollment</dt>
+            <dd><%= teacher.teacher_enrollment_id %></dd>
+          </div>
 
 
         </dl>
