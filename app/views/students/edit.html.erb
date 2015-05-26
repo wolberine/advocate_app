@@ -62,6 +62,9 @@
 
               <input type="text" id="gender" name="gender" placeholder="Gender" class="form-control" value="<%= @student.gender %>">
 
+              #options_for_select([ "VISA", "MasterCard" ], "MasterCard")
+              #instead of Mastercard, put in @student.gender
+
             </div>
 
           </div>
