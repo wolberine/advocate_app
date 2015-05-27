@@ -27,14 +27,17 @@
       <div class="panel-body">
         <dl>
 
-          <dt>School</dt>
-          <dd><%= teacher.school.name %></dd>
-
           <dt>Network</dt>
           <dd><%= teacher.school.network.name %></dd>
 
           <dt>Advocate</dt>
           <dd><%= teacher.advocate.name %></dd>
+
+          <dt>School</dt>
+          <dd><%= teacher.school.name %></dd>
+
+          <dt>Classroom</dt>
+          <dd><%= teacher.classroom.name %></dd>
 
           <button type="button" class="btn" data-toggle="collapse" data-target="#personalDataToggle<%= teacher.id %>">View personal details  <i class="fa fa-info-circle"></i></button>
           <div id="personalDataToggle<%= teacher.id %>" class="collapse out">

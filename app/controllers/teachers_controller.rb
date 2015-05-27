@@ -26,6 +26,8 @@ class TeachersController < ApplicationController
 
     @teacher.school_id = params[:school_id]
 
+    @teacher.classroom_id = params[:classroom_id]
+
     @teacher.name = params[:name]
 
 
@@ -58,6 +60,8 @@ class TeachersController < ApplicationController
 
     @teacher.school_id = params[:school_id]
 
+    @teacher.classroom_id = params[:classroom_id]
+
     @teacher.name = params[:name]
 
 
@@ -69,6 +73,19 @@ class TeachersController < ApplicationController
     end
 
   end
+
+  def update_teacher_classroom
+    @teacher = Teacher.find(params[:teacher_id])
+
+    @teacher.classroom_id = params[:teacher_classroom_id]
+
+    if @teacher.save
+      redirect_to :back , :notice => "Teacher added to classroom."
+    else
+      render 'edit'
+    end
+  end
+
 
   def destroy
     @teacher = Teacher.find(params[:id])

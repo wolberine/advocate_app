@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Classroom resource:
+  # CREATE
+  get "/classrooms/new", :controller => "classrooms", :action => "new"
+  post "/create_classroom", :controller => "classrooms", :action => "create"
+
+  # READ
+  get "/classrooms", :controller => "classrooms", :action => "index"
+  get "/classrooms/:id", :controller => "classrooms", :action => "show"
+
+  # UPDATE
+  get "/classrooms/:id/edit", :controller => "classrooms", :action => "edit"
+  post "/update_classroom/:id", :controller => "classrooms", :action => "update"
+
+  # DELETE
+  get "/delete_classroom/:id", :controller => "classrooms", :action => "destroy"
+  #------------------------------
+
   # Routes for the Network resource:
   # CREATE
   get "/networks/new", :controller => "networks", :action => "new"
@@ -79,6 +96,7 @@ Rails.application.routes.draw do
   # UPDATE
   get "/students/:id/edit", :controller => "students", :action => "edit"
   post "/update_student/:id", :controller => "students", :action => "update"
+  post "update_student_classroom", :controller => "students", :action => "update_student_classroom"
 
   # DELETE
   get "/delete_student/:id", :controller => "students", :action => "destroy"
@@ -96,6 +114,8 @@ Rails.application.routes.draw do
   # UPDATE
   get "/teacher_enrollments/:id/edit", :controller => "teacher_enrollments", :action => "edit"
   post "/update_teacher_enrollment/:id", :controller => "teacher_enrollments", :action => "update"
+
+  post "update_teacher_classroom", :controller => "teachers", :action => "update_teacher_classroom"
 
   # DELETE
   get "/delete_teacher_enrollment/:id", :controller => "teacher_enrollments", :action => "destroy"

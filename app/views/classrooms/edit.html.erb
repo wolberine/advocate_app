@@ -1,0 +1,215 @@
+<!-- Validation failure messages -->
+
+<% if @classroom.errors.any? %>
+  <% @classroom.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit Classroom #<%= @classroom.id %></h3>
+      </div>
+      <div class="panel-body">
+
+        <form action="/update_classroom/<%= @classroom.id %>" method="post" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+
+
+          <!-- Label and input for school_id -->
+          <div class="form-group">
+
+            <label for="school_id" class="col-sm-2 control-label">
+              School
+            </label>
+            <div class="col-sm-10">
+
+              <%= select_tag(:school_id, options_from_collection_for_select(School.all, :id, :name, @classroom.school_id), :class => "form-control") %>
+
+            </div>
+
+          </div>
+
+
+          <!-- Label and input for name -->
+          <div class="form-group">
+
+            <label for="name" class="col-sm-2 control-label">
+              Name
+            </label>
+            <div class="col-sm-10">
+
+              <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @classroom.name %>">
+
+            </div>
+
+          </div>
+
+
+          <!-- Label and input for description -->
+          <div class="form-group">
+
+            <label for="description" class="col-sm-2 control-label">
+              Description
+            </label>
+            <div class="col-sm-10">
+
+              <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @classroom.description %></textarea>
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-warning">
+                Update Classroom
+              </button>
+              or
+
+              <a href="/classrooms/<%= @classroom.id %>">Cancel</a>
+
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- End responsive panel example -->
+
+<!-- Begin manipulate classroom participants -->
+<button type="button" class="btn" data-toggle="collapse" data-target="#studentFormToggle">Add a new student  <i class="fa fa-plus"></i></button>
+
+<button type="button" class="btn" data-toggle="collapse" data-target="#teacherFormToggle">Add a new teacher  <i class="fa fa-plus"></i></button>
+
+<!-- Begin existing student panel -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Add Existing Students</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/update_student_classroom/" method="post" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+          <div class="form-group">
+
+            <label for="student" class="col-sm-2 control-label">
+              Student
+            </label>
+              <div class="col-sm-10">
+                <%= select_tag(:student_id, options_from_collection_for_select(Student.where(:school_id => @classroom.school_id), :id, :name, 1), :class => "form-control") %>
+              </div>
+          </div>
+          <%= hidden_field_tag :student_classroom_id, @classroom.id %>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-warning">
+                    Add Student to Classroom
+                </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- End existing student panel -->
+
+<!-- Begin existing teacher panel -->
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Add Existing Teachers</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/update_teacher_classroom/" method="post" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+          <div class="form-group">
+
+            <label for="teacher" class="col-sm-2 control-label">
+              Teacer
+            </label>
+              <div class="col-sm-10">
+                <%= select_tag(:teacher_id, options_from_collection_for_select(Teacher.where(:school_id => @classroom.school_id), :id, :name, 1), :class => "form-control") %>
+              </div>
+          </div>
+          <%= hidden_field_tag :teacher_classroom_id, @classroom.id %>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-warning">
+                    Add Teacher to Classroom
+                </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- End existing teacher panel -->
+
+<!-- End manipulate classroom participants -->
+
+
+
+<!--Begin new student form -->
+
+<div id="studentFormToggle" class="collapse out">
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Add New Student</h3>
+        </div>
+        <div class="panel-body">
+          <%= render :partial => "shared/student_new_form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End new student form -->
+
+
+<!--Begin new teacher form -->
+
+<div id="teacherFormToggle" class="collapse out">
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Add New Teacher</h3>
+        </div>
+        <div class="panel-body">
+          <%= render :partial => "shared/teacher_new_form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End new teacher form -->
+
+<!--Only let user select one action (new teacher, new student, existing student, existing teacher) at a time to add people to this classroom-->
+
+
+

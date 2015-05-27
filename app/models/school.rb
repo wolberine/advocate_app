@@ -3,4 +3,5 @@ class School < ActiveRecord::Base
   has_many :students , :class_name => "Student", :foreign_key => "school_id"
   belongs_to :advocate
   belongs_to :network
+  has_many :classrooms , :class_name => "Classroom", :foreign_key => "school_id"
 end

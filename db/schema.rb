@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150525173722) do
+ActiveRecord::Schema.define(version: 20150527173629) do
 
   create_table "advocates", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 20150525173722) do
 
   add_index "advocates", ["email"], name: "index_advocates_on_email", unique: true
   add_index "advocates", ["reset_password_token"], name: "index_advocates_on_reset_password_token", unique: true
+
+  create_table "classrooms", force: :cascade do |t|
+    t.integer  "school_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "networks", force: :cascade do |t|
     t.integer  "advocate_id"
@@ -70,6 +78,7 @@ ActiveRecord::Schema.define(version: 20150525173722) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "classroom_id"
   end
 
   create_table "teacher_courses", force: :cascade do |t|
@@ -98,6 +107,7 @@ ActiveRecord::Schema.define(version: 20150525173722) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "classroom_id"
   end
 
 end

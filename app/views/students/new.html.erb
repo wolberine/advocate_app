@@ -52,6 +52,21 @@
           </div>
 
 
+          <!-- Label and input for classroom_id -->
+          <div class="form-group">
+
+            <label for="classroom_id" class="col-sm-2 control-label">
+              Classroom
+            </label>
+            <div class="col-sm-10">
+
+              <%= select_tag(:classroom_id, options_from_collection_for_select(Classroom.all, :id, :name, @student.classroom_id), :class => "form-control") %>
+
+            </div>
+
+          </div>
+
+
           <!-- Label and input for gender -->
           <div class="form-group">
 
@@ -60,7 +75,7 @@
             </label>
             <div class="col-sm-10">
 
-              <input type="text" id="gender" name="gender" placeholder="Gender" class="form-control" value="<%= @student.gender %>">
+              <%= select_tag(:gender, options_for_select([ "Male", "Female" ], @student.gender), :class => "form-control") %>
 
             </div>
 

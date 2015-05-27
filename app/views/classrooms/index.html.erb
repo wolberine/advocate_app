@@ -1,8 +1,8 @@
 <div class="page-header">
   <h1>
-    Students
+    Classrooms
 
-    <a href="/students/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
+    <a href="/classrooms/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
 
   </h1>
 </div>
@@ -11,55 +11,46 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <input type="text" id="quicksearch" placeholder="Search Students (start typing)" class="form-control">
+    <input type="text" id="quicksearch" placeholder="Search Classrooms (start typing)" class="form-control">
   </div>
 </div>
 
 <hr>
 
 <div class="row isotope-container">
-<% @students.each do |student| %>
+<% @classrooms.each do |classroom| %>
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= student.name %></h3>
+        <h3 class="panel-title">Classroom #<%= classroom.id %></h3>
       </div>
       <div class="panel-body">
         <dl>
 
           <dt>School</dt>
-          <dd><%= student.school.name %></dd>
-
-          <dt>Classroom</dt>
-          <dd><%= student.classroom.name %></dd>
+          <dd><%= classroom.school.name %></dd>
 
 
-          <button type="button" class="btn" data-toggle="collapse" data-target="#personalDataToggle<%= student.id %>">View personal details  <i class="fa fa-info-circle"></i></button>
-          <div id="personalDataToggle<%= student.id %>" class="collapse out">
-            <dt>Gender</dt>
-            <dd><%= student.gender %></dd>
+          <dt>Name</dt>
+          <dd><%= classroom.name %></dd>
 
 
-            <dt>Dob</dt>
-            <dd><%= student.dob %></dd>
+          <dt>Description</dt>
+          <dd><%= classroom.description %></dd>
 
-
-            <dt>Education level</dt>
-            <dd><%= student.education_level %></dd>
-          </div>
 
         </dl>
         <div class="btn-group btn-group-justified">
 
-          <a href="/students/<%= student.id %>" class="btn btn-primary">
+          <a href="/classrooms/<%= classroom.id %>" class="btn btn-primary">
             <i class="fa fa-search-plus"></i>
           </a>
 
-          <a href="/students/<%= student.id %>/edit" class="btn btn-warning">
+          <a href="/classrooms/<%= classroom.id %>/edit" class="btn btn-warning">
             <i class="fa fa-edit"></i>
           </a>
 
-          <a href="/delete_student/<%= student.id %>" class="btn btn-danger" rel="nofollow">
+          <a href="/delete_classroom/<%= classroom.id %>" class="btn btn-danger" rel="nofollow">
             <i class="fa fa-trash-o"></i>
           </a>
 

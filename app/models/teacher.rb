@@ -5,4 +5,5 @@ class Teacher < ActiveRecord::Base
   belongs_to :school
   has_many :teacher_courses, :through => :teacher_enrollments
   has_many :students, :through => :student_enrollments
+  belongs_to :classroom
 end

@@ -16,7 +16,9 @@ class StudentsController < ApplicationController
 
     @student.school_id = params[:school_id]
 
-    @student.gender = params[:gender].downcase
+    @student.classroom_id = params[:classroom_id]
+
+    @student.gender = params[:gender]
 
     @student.dob = params[:dob]
 
@@ -41,8 +43,9 @@ class StudentsController < ApplicationController
   def update
     @student = Student.find(params[:id])
 
-
     @student.school_id = params[:school_id]
+
+    @student.classroom_id = params[:classroom_id]
 
     @student.gender = params[:gender]
 
@@ -60,6 +63,19 @@ class StudentsController < ApplicationController
       render 'edit'
     end
 
+  end
+
+
+  def update_student_classroom
+    @student = Student.find(params[:student_id])
+
+    @student.classroom_id = params[:student_classroom_id]
+
+    if @student.save
+      redirect_to :back , :notice => "Student added to classroom."
+    else
+      render 'edit'
+    end
   end
 
   def destroy
