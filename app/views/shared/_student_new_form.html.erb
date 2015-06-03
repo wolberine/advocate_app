@@ -1,5 +1,6 @@
 
-        <form action="/create_student" method="post" class="form-horizontal">
+
+        <form action="/create_classroom_student" method="post" class="form-horizontal">
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -25,7 +26,25 @@
             </label>
             <div class="col-sm-10">
 
-              <%= select_tag(:school_id, options_from_collection_for_select(School.all, :id, :name, @classroom.school_id), :class => "form-control") %>
+              <%= select_tag(:school_id, options_from_collection_for_select(School.all, :id, :name, @classroom.school_id), :class => "form-control", :disabled => "disabled") %>
+
+              <%= hidden_field_tag 'school_id', @classroom.school_id %>
+
+            </div>
+
+          </div>
+
+          <!-- Label and input for classroom_id -->
+          <div class="form-group">
+
+            <label for="classroom_id" class="col-sm-2 control-label">
+              Classroom
+            </label>
+            <div class="col-sm-10">
+
+              <%= select_tag(:classroom_id, options_from_collection_for_select(Classroom.all, :id, :name, @classroom.id), :class => "form-control", :disabled => "disabled") %>
+
+              <%= hidden_field_tag 'classroom_id', @classroom.id %>
 
             </div>
 
@@ -54,26 +73,8 @@
               Dob
             </label>
             <div class="col-sm-10">
-
               <input type="date" id="dob" name="dob" placeholder="Dob" class="form-control" value="<%= @student.dob %>">
-
             </div>
-
-          </div>
-
-
-          <!-- Label and input for education_level -->
-          <div class="form-group">
-
-            <label for="education_level" class="col-sm-2 control-label">
-              Education level
-            </label>
-            <div class="col-sm-10">
-
-              <input type="text" id="education_level" name="education_level" placeholder="Education level" class="form-control" value="<%= @student.education_level %>">
-
-            </div>
-
           </div>
 
 

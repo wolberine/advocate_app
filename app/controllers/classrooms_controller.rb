@@ -39,14 +39,11 @@ class ClassroomsController < ApplicationController
   def update
     @classroom = Classroom.find(params[:id])
 
-
     @classroom.school_id = params[:school_id]
 
     @classroom.name = params[:name]
 
     @classroom.description = params[:description]
-
-
 
     if @classroom.save
       redirect_to "/classrooms", :notice => "Classroom updated successfully."
@@ -60,7 +57,6 @@ class ClassroomsController < ApplicationController
     @classroom = Classroom.find(params[:id])
 
     @classroom.destroy
-
 
     redirect_to "/classrooms", :notice => "Classroom deleted."
 

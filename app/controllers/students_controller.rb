@@ -26,10 +26,31 @@ class StudentsController < ApplicationController
 
     @student.name = params[:name]
 
-
-
     if @student.save
       redirect_to "/students", :notice => "Student created successfully."
+    else
+      render 'new'
+    end
+
+  end
+
+  def create_classroom_student
+    @student = Student.new
+
+    @student.school_id = params[:school_id]
+
+    @student.classroom_id = params[:classroom_id]
+
+    @student.gender = params[:gender]
+
+    @student.dob = params[:dob]
+
+    @student.education_level = params[:education_level]
+
+    @student.name = params[:name]
+
+    if @student.save
+      redirect_to :back, :notice => "Student created and added to classroom successfully."
     else
       render 'new'
     end
@@ -55,8 +76,6 @@ class StudentsController < ApplicationController
 
     @student.name = params[:name]
 
-
-
     if @student.save
       redirect_to "/students", :notice => "Student updated successfully."
     else
@@ -73,6 +92,18 @@ class StudentsController < ApplicationController
 
     if @student.save
       redirect_to :back , :notice => "Student added to classroom."
+    else
+      render 'edit'
+    end
+  end
+
+  def remove_student_classroom
+    @student = Student.find(params[:student_id])
+
+    @student.classroom_id = params[:student_classroom_id]
+
+    if @student.save
+      redirect_to :back , :notice => "Student removed from classroom."
     else
       render 'edit'
     end

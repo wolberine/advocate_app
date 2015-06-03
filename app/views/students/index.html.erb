@@ -27,11 +27,16 @@
       <div class="panel-body">
         <dl>
 
-          <dt>School</dt>
-          <dd><%= student.school.name %></dd>
+          <% if defined?(student.school.name) %>
+            <dt>School</dt>
+            <dd><%= student.school.name %></dd>
+          <% end %>
 
-          <dt>Classroom</dt>
-          <dd><%= student.classroom.name %></dd>
+          <% if defined?(student.classroom.name) %>
+            <dt>Classroom</dt>
+            <dd><%= student.classroom.name %></dd>
+          <% end %>
+          <!--probably should put these everywhere -->
 
 
           <button type="button" class="btn" data-toggle="collapse" data-target="#personalDataToggle<%= student.id %>">View personal details  <i class="fa fa-info-circle"></i></button>

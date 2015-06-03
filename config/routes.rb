@@ -88,6 +88,7 @@ Rails.application.routes.draw do
   # CREATE
   get "/students/new", :controller => "students", :action => "new"
   post "/create_student", :controller => "students", :action => "create"
+  post "/create_classroom_student", :controller => "students", :action => "create_classroom_student"
 
   # READ
   get "/students", :controller => "students", :action => "index"
@@ -97,6 +98,7 @@ Rails.application.routes.draw do
   get "/students/:id/edit", :controller => "students", :action => "edit"
   post "/update_student/:id", :controller => "students", :action => "update"
   post "update_student_classroom", :controller => "students", :action => "update_student_classroom"
+  post "remove_student_classroom", :controller => "students", :action => "remove_student_classroom"
 
   # DELETE
   get "/delete_student/:id", :controller => "students", :action => "destroy"
@@ -114,8 +116,8 @@ Rails.application.routes.draw do
   # UPDATE
   get "/teacher_enrollments/:id/edit", :controller => "teacher_enrollments", :action => "edit"
   post "/update_teacher_enrollment/:id", :controller => "teacher_enrollments", :action => "update"
-
   post "update_teacher_classroom", :controller => "teachers", :action => "update_teacher_classroom"
+ post "remove_teacher_classroom", :controller => "teachers", :action => "remove_teacher_classroom"
 
   # DELETE
   get "/delete_teacher_enrollment/:id", :controller => "teacher_enrollments", :action => "destroy"
@@ -125,6 +127,7 @@ Rails.application.routes.draw do
   # CREATE
   get "/teachers/new", :controller => "teachers", :action => "new"
   post "/create_teacher", :controller => "teachers", :action => "create"
+  post "/create_classroom_teacher", :controller => "teachers", :action => "create_classroom_teacher"
 
   # READ
   get "/teachers", :controller => "teachers", :action => "index"
