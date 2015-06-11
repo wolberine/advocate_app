@@ -43,13 +43,15 @@
                 <i class="fa fa-chevron-left"></i>
               </a>
 
-              <a href="/teachers/<%= @teacher.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
+              <% if @teacher.advocate_id == current_advocate.id %>
+                <a href="/teachers/<%= @teacher.id %>/edit" class="btn btn-warning">
+                  <i class="fa fa-edit"></i>
+                </a>
 
-              <a href="/delete_teacher/<%= @teacher.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
+                <a href="/delete_teacher/<%= @teacher.id %>" class="btn btn-danger" rel="nofollow">
+                  <i class="fa fa-trash-o"></i>
+                </a>
+              <% end %>
 
             </div>
           </div>

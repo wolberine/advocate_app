@@ -46,13 +46,19 @@
             <i class="fa fa-search-plus"></i>
           </a>
 
-          <a href="/networks/<%= network.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
 
-          <a href="/delete_network/<%= network.id %>" class="btn btn-danger" rel="nofollow">
-            <i class="fa fa-trash-o"></i>
-          </a>
+          <% if network.advocate_id == current_advocate.id %>
+
+
+            <a href="/networks/<%= network.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+
+            <a href="/delete_network/<%= network.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+
+          <% end %>
 
         </div>
       </div>

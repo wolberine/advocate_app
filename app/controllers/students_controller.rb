@@ -1,4 +1,14 @@
 class StudentsController < ApplicationController
+
+  before_action :check_if_owner, only: [:edit, :update, :destroy]
+
+  def check_if_owner
+    student = Student.find(params[:id])
+    if student.classroom.school.advocate_id != current_advocate.id
+      redirect_to "/students", notice:"Nope, you are not that student's advocate!"
+    end
+  end
+
   def index
     @students = Student.all
   end

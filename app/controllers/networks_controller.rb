@@ -1,4 +1,15 @@
 class NetworksController < ApplicationController
+
+  before_action :check_if_owner, only: [:edit, :update, :destroy]
+
+  def check_if_owner
+    network = Network.find(params[:id])
+    if network.advocate_id != current_advocate.id
+      redirect_to "/networks", notice:"Nope, you are not that network's advocate!"
+    end
+  end
+
+
   def index
     @networks = Network.all
   end

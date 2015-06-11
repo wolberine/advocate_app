@@ -46,13 +46,15 @@
             <i class="fa fa-search-plus"></i>
           </a>
 
-          <a href="/classrooms/<%= classroom.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
+          <% if classroom.school.advocate_id == current_advocate.id %>
+            <a href="/classrooms/<%= classroom.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
 
-          <a href="/delete_classroom/<%= classroom.id %>" class="btn btn-danger" rel="nofollow">
-            <i class="fa fa-trash-o"></i>
-          </a>
+            <a href="/delete_classroom/<%= classroom.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          <% end %>
 
         </div>
       </div>

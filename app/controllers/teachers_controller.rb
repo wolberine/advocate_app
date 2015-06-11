@@ -1,4 +1,14 @@
 class TeachersController < ApplicationController
+
+  before_action :check_if_owner, only: [:edit, :update, :destroy]
+
+  def check_if_owner
+    teacher = Teacher.find(params[:id])
+    if teacher.advocate_id != current_advocate.id
+      redirect_to "/teachers", notice:"Nope, you are not that teacher's advocate!"
+    end
+  end
+
   def index
     @teachers = Teacher.all
   end

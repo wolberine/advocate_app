@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :advocates
   # Routes for the Classroom resource:
   # CREATE
   get "/classrooms/new", :controller => "classrooms", :action => "new"
@@ -117,7 +118,7 @@ Rails.application.routes.draw do
   get "/teacher_enrollments/:id/edit", :controller => "teacher_enrollments", :action => "edit"
   post "/update_teacher_enrollment/:id", :controller => "teacher_enrollments", :action => "update"
   post "update_teacher_classroom", :controller => "teachers", :action => "update_teacher_classroom"
- post "remove_teacher_classroom", :controller => "teachers", :action => "remove_teacher_classroom"
+  post "remove_teacher_classroom", :controller => "teachers", :action => "remove_teacher_classroom"
 
   # DELETE
   get "/delete_teacher_enrollment/:id", :controller => "teacher_enrollments", :action => "destroy"
@@ -141,12 +142,14 @@ Rails.application.routes.draw do
   get "/delete_teacher/:id", :controller => "teachers", :action => "destroy"
   #------------------------------
 
-  devise_for :advocates
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+
+  root 'schools#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

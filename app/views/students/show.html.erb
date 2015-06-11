@@ -11,12 +11,14 @@
           <div class="col-md-12">
             <dl class="dl-horizontal">
 
+            <% if defined?(@student.school.name) %>
               <dt>School</dt>
               <dd><%= @student.school.name %></dd>
-
+            <% end %>
+            <% if defined?(@student.classroom.name) %>
               <dt>Classroom</dt>
               <dd><%= @student.classroom.name %></dd>
-
+            <% end %>
               <dt>Gender</dt>
               <dd><%= @student.gender %></dd>
 
@@ -35,14 +37,15 @@
               <a href="/students" class="btn btn-primary">
                 <i class="fa fa-chevron-left"></i>
               </a>
+              <% if @student.classroom.school.advocate_id == current_advocate.id %>
+                <a href="/students/<%= @student.id %>/edit" class="btn btn-warning">
+                  <i class="fa fa-edit"></i>
+                </a>
 
-              <a href="/students/<%= @student.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-
-              <a href="/delete_student/<%= @student.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
+                <a href="/delete_student/<%= @student.id %>" class="btn btn-danger" rel="nofollow">
+                  <i class="fa fa-trash-o"></i>
+                </a>
+              <% end %>
 
             </div>
           </div>
